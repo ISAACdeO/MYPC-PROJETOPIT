@@ -1,0 +1,150 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #e0ac34;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background-color: #ffffff;
+    padding: 70px 20px;
+    position: relative;
+    border: #000 solid 1px;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-size: 56px;
+    margin: 0;
+    padding-top: 15px;
+    position: absolute;
+    top: 22px;
+}
+
+header nav {
+    display: flex;
+}
+
+header nav a {
+    margin: 0 55px;
+    text-decoration: none;
+    color: #000;
+    font-size: 25px;
+}
+
+#home {
+    position: absolute;
+    left: 370px;
+    top: 55px;
+    color: #e0ac34;
+    font-weight: 700;
+}
+
+#cadastrar {
+    position: absolute;
+    left: 490px;
+    top: 55px;
+    color: #e0ac34;
+    font-weight: 700;
+}
+
+#sobreN {
+    position: absolute;
+    left: 645px;
+    top: 55px;
+    color: #e0ac34;
+    font-weight: 700;
+}
+
+#build {
+    position: absolute;
+    left: 810px;
+    top: 55px;
+    color: #e0ac34;
+    font-weight: 700;
+}
+
+.content {
+    flex: 1;
+}
+
+.login-container {
+    width: 600px;
+    padding: 60px;
+    margin: 50px auto;
+    height: 430px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.login-container label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.login-container input,
+.login-container button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.login-container button {
+    background-color: #e0ac34;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.login-container button:hover {
+    background-color: #e0ac34;
+}
+
+footer {
+    background-color: #fff;
+    color: #e0ac34;
+    font-weight: 700;
+    padding: 20px 0;
+    text-align: center;
+    border-top: 1px solid #444;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 135px;
+}
+
+#btn1 {
+    margin-top: 20px;
+    font-weight: 700;
+}
+
+.footer-content p {
+    position: absolute;
+    margin: 0;
+    padding-bottom: 10px;
+    top: 62px;
+    left: 41%;
+    font-size: large;
+}
+
+#mypc {color: #e0ac34;}
