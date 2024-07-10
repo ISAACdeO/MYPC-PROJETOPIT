@@ -21,12 +21,25 @@
 
     <div class="login-container">
         <h2>Login</h2>
-        <form action="login.php" method="post">
-            <label for="username">E-Mail:</label>
-            <input type="text" id="username" name="username" required>
+        <?php
+
+if(isset($_SESSION['msg'])){
+ echo $_SESSION['msg'];
+ unset($_SESSION['msg']);
+}
+
+ ?>
+        <form action="valida.php" method="post">
+            <label for="username">Usuario:</label>
+            <input type="text" name = "usuario" placeholder="Digite o seu usario" required>
+
             <label for="password">Senha:</label>
-            <input type="password" id="password" name="password" required>
-            <button type="submit" id="btn1">Fazer Login</button>
+            <input type="password" name = "senha" placeholder="Digite o sua senha">
+
+            <input type = "submit" name="btnLogin" value="Acessar">
+
+            <h4>Voce não possui uma conta ?</h4>
+            <a href="telaDRegistro.php">Cria gratis</a>
         </form>
     </div>
 

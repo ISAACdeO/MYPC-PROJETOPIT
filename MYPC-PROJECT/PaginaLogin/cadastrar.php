@@ -17,7 +17,7 @@ if($btnCadUsuario){
 
  $resultado_usuario  = mysqli_query($conn, $result_usuario);    
  if(mysqli_insert_id($conn)){
-    header("Location:login.php");
+    header("Location:telaDLogin.php");
 
  }else{
    $_SESSION['msg'] = "Erro ao cadastrar o usuario";

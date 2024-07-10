@@ -6,10 +6,8 @@ $btnLogin = filter_input(INPUT_POST, 'btnLogin', FILTER_SANITIZE_SPECIAL_CHARS);
 if($btnLogin){
  $usuario = $btnLogin = filter_input(INPUT_POST, 'usuario', FILTER_SANITIZE_SPECIAL_CHARS);
  $senha = $btnLogin = filter_input(INPUT_POST, 'senha', FILTER_SANITIZE_SPECIAL_CHARS);
- //echo "$usuario - $senha";
 if((!empty($usuario)) AND (!empty($senha))){
-     //GERAR a SENHA criptografada
-     //echo password_hash($senha,PASSWORD_DEFAULT);
+  
 
      $result_usuario = "SELECT id , nome , email , senha From usuarios WHERE usuario='$usuario' LIMIT 1";
      $resultado_usuario = mysqli_query($conn, $result_usuario);
@@ -24,7 +22,7 @@ if((!empty($usuario)) AND (!empty($senha))){
           else {
                $_SESSION['msg'] = "Login e senha incorreto! ";
 
-               header("Location: login.php");
+               header("Location: telaDLogin.php");
           }
 
      }

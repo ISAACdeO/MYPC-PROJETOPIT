@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,9 +9,14 @@
 
 </head>
 <body>
+<?php
+    session_start();
+    $userName = isset($_SESSION['nome']) ? htmlspecialchars($_SESSION['nome']) : "Conta";
+    ?>
     <header>
         <div class="logo">MYPC</div>
-        <div class="account">Conta</div>
+        <div class="account"><?php echo "Bem-vindo, " . $userName; ?></div>
+     
     </header>
     <main>
         <h1>No que podemos te ajudar?</h1>
