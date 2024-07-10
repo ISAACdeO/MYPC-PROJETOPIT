@@ -10,7 +10,7 @@
     <header>
         <div class="conteiner-1">
             <h1>Notebooks</h1>
-            <h2>Temos algumas sujestões de Notebooks que você pode gostar!</h2>
+            <h2>Temos algumas sugestões de Notebooks que você pode gostar!</h2>
         </div>
     </header>
 
