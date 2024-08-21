@@ -9,8 +9,34 @@ CREATE TABLE users (
 );
 
 
+INSERT INTO processadores (nome, socket, memoria_max, preco) VALUES
+('Intel Core i5-10400', 'LGA 1200', 128, 899.99);
 
+ALTER TABLE processadores
+ADD COLUMN link_loja VARCHAR(255) NULL;
+    
+ALTER TABLE processadores
+ADD COLUMN descricao TEXT NULL;
 
+ALTER TABLE processadores
+ADD COLUMN imagem VARCHAR(255) NULL;
+
+-- Atualização da tabela placas_mae
+ALTER TABLE processadores
+ADD COLUMN preco DECIMAL(10, 2) NOT NULL DEFAULT 0.00;
+
+ALTER TABLE processadores
+ADD COLUMN descricao_detalhada TEXT;
+
+-- Adiciona a coluna descricao_detalhada à tabela placas_mae
+ALTER TABLE placas_mae
+ADD COLUMN descricao_detalhada TEXT;
+-- Adiciona a coluna preco à tabela placas_mae
+ALTER TABLE placas_mae
+ADD COLUMN preco DECIMAL(10, 2) NOT NULL DEFAULT 0.00;
+
+ALTER TABLE placas_mae
+ADD COLUMN imagem VARCHAR(255) NULL;
 
 -- Seção de Compatibilidade
 drop table processadores;
@@ -18,7 +44,8 @@ CREATE TABLE processadores (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(255) NOT NULL,
     socket VARCHAR(50) NOT NULL,
-    memoria_max INT NOT NULL
+    memoria_max INT NOT NULL,
+    preco DECIMAL(10, 2) NOT NULL
 );
 
 
@@ -27,8 +54,85 @@ CREATE TABLE placas_mae (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(255) NOT NULL,
     socket VARCHAR(50) NOT NULL,
-    memoria_max INT NOT NULL
+    memoria_max INT NOT NULL,
+    preco DECIMAL(10, 2) NOT NULL
 );
+
+drop table memoria_ram;
+CREATE TABLE memoria_ram (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL,
+    descricao VARCHAR(500) NOT NULL,
+    descricao_detalhada VARCHAR(500) NOT NULL,
+    qualidade VARCHAR(50) NOT NULL,
+    imagem VARCHAR(300) NOT NULL,
+    preco DECIMAL(10, 2) NOT NULL,
+    tipo_memoria VARCHAR(50) NOT NULL,     -- DDR4, DDR5, etc.
+    capacidade INT NOT NULL,               -- Capacidade em GB
+    velocidade INT NOT NULL ,
+    link_loja VARCHAR(500) NULL-- Velocidade em MHz
+);
+
+ALTER TABLE placas_video
+ADD COLUMN link_loja VARCHAR(255) NULL;
+ALTER TABLE processadores
+ADD COLUMN imagem VARCHAR(255) AFTER memoria_max;
+ALTER TABLE memoria_ram
+ADD COLUMN link_loja VARCHAR(255) NULL;
+ALTER TABLE placas_mae
+ADD COLUMN imagem VARCHAR(255) AFTER memoria_max;
+ALTER TABLE fonte
+ADD COLUMN link_loja VARCHAR(255) NULL;
+-- Inserção de teste para a tabela memoria_ram
+INSERT INTO memoria_ram (nome, descricao, descricao_detalhada, qualidade, imagem, preco, tipo_memoria, capacidade, velocidade) VALUES
+('Corsair Vengeance LPX 16GB', 'Memória RAM DDR4 de 16GB', 'Corsair Vengeance LPX, DDR4, 16GB, 3200MHz', 'Alta', 'corsair_vengeance_lpx.jpg', 299.99, 'DDR4', 16, 3200),
+('Kingston HyperX Fury 8GB', 'Memória RAM DDR4 de 8GB', 'Kingston HyperX Fury, DDR4, 8GB, 2666MHz', 'Boa', 'kingston_hyperx_fury.jpg', 149.99, 'DDR4', 8, 2666);
+
+
+CREATE TABLE fonte (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL,
+    descricao VARCHAR(500) NOT NULL,
+    descricao_detalhada VARCHAR(500) NOT NULL,
+    qualidade VARCHAR(50) NOT NULL,
+    imagem VARCHAR(300) NOT NULL,
+    preco DECIMAL(10, 2) NOT NULL,
+    potencia INT NOT NULL,                -- Potência em Watts
+    certificacao VARCHAR(50) NOT NULL,    -- Certificação, por exemplo, 80 Plus Gold
+    modularidade VARCHAR(50) NOT NULL,
+    link_loja VARCHAR(500) NULL-- Modular, Semi-Modular, Não-Modular
+);
+
+INSERT INTO fonte (nome, descricao, descricao_detalhada, qualidade, imagem, preco, potencia, certificacao, modularidade) 
+VALUES 
+('Corsair RM850e', 'Fonte 850W 80 Plus Gold', 'Corsair RM850x, 850W, Certificação 80 Plus Gold, Modular', 'Excelente', 'https://acesse.one/FZqw9', 499.99, 850, '80 Plus Gold', 'Modular');
+
+-- Inserção de teste para a tabela fonte
+INSERT INTO fonte (nome, descricao, descricao_detalhada, qualidade, imagem, preco, potencia, certificacao, modularidade) VALUES
+('Corsair RM850x', 'Fonte 850W 80 Plus Gold', 'Corsair RM850x, 850W, Certificação 80 Plus Gold, Modular', 'Excelente', 'corsair_rm850x.jpg', 499.99, 850, '80 Plus Gold', 'Modular'),
+('EVGA 600 W1', 'Fonte 600W 80 Plus White', 'EVGA 600 W1, 600W, Certificação 80 Plus White, Não-Modular', 'Boa', 'evga_600_w1.jpg', 229.99, 600, '80 Plus White', 'Não-Modular');
+-- Inserção de teste para a tabela fonte
+INSERT INTO fonte (nome, descricao, descricao_detalhada, qualidade, imagem, preco, potencia, certificacao, modularidade, link_loja) VALUES
+('MSI MAG A650BN', 'Fonte 650W 80 Plus Bronze', 'MSI MAG A650BN, 650W, 80 Plus Bronze, PFC Ativo, Com Cabo, Preto.', 'Boa', 'https://www.kabum.com.br/_next/image?url=https%3A%2F%2Fimages.kabum.com.br%2Fprodutos%2Ffotos%2F369658%2Ffonte-msi-mag-a650bn-atx-650w-80-plus-bronze-pfc-ativo-entrada-bivolt-preto-306-7zp2b22-ce0_1665770996_g.jpg&w=640&q=100', 279.99, 650, '80 Plus Bronze', 'Não-Modular', 'https://l1nk.dev/IXDj9');
+
+INSERT INTO memoria_ram (nome, descricao, descricao_detalhada, qualidade, imagem, preco, tipo_memoria, capacidade, velocidade, link_loja) VALUES
+('Corsair Vengeance LPX 16GB', 'Memória RAM DDR4 de 16GB', 'Corsair Vengeance LPX, DDR4, 16GB, 3200MHz', 'Alta', 'corsair_vengeance_lpx.jpg', 299.99, 'DDR4', 16, 3200, 'https://www.exemplo.com/produto/corsair-vengeance-lpx-16gb'),
+('Kingston HyperX Fury 8GB', 'Memória RAM DDR4 de 8GB', 'Kingston HyperX Fury, DDR4, 8GB, 2666MHz', 'Boa', 'kingston_hyperx_fury.jpg', 149.99, 'DDR4', 8, 2666, 'https://www.exemplo.com/produto/kingston-hyperx-fury-8gb');
+INSERT INTO memoria_ram (nome, descricao, descricao_detalhada, qualidade, imagem, preco, tipo_memoria, capacidade, velocidade, link_loja) VALUES
+('Corsair Vengeance RGB Pro 16GB (2x8GB)', 'Memória RAM DDR4 de 16GB (2x8GB), 3600MHz', 'Corsair Vengeance RGB Pro, 16GB (2x8GB), 3600MHz, DDR4, CL18, Preto.', 'Excelente', 'https://www.kabum.com.br/_next/image?url=https%3A%2F%2Fimages.kabum.com.br%2Fprodutos%2Ffotos%2F108450%2Fmemoria-corsair-vengeance-rgb-pro-16gb-2x8gb-3600mhz-ddr4-cl18-cmw16gx4m2z3600c18_1575379797_g.jpg&w=640&q=100', 388.99, 'DDR4', 16, 3600, 'https://l1nk.dev/1kZl5');
+
+
+INSERT INTO fonte (nome, descricao, descricao_detalhada, qualidade, imagem, preco, potencia, certificacao, modularidade, link_loja) VALUES
+('Corsair RM850x', 'Fonte 850W 80 Plus Gold', 'Corsair RM850x, 850W, Certificação 80 Plus Gold, Modular', 'Excelente', 'corsair_rm850x.jpg', 499.99, 850, '80 Plus Gold', 'Modular', 'https://www.exemplo.com/produto/corsair-rm850x'),
+('EVGA 600 W1', 'Fonte 600W 80 Plus White', 'EVGA 600 W1, 600W, Certificação 80 Plus White, Não-Modular', 'Boa', 'evga_600_w1.jpg', 229.99, 600, '80 Plus White', 'Não-Modular', 'https://www.exemplo.com/produto/evga-600-w1');
+
+
+
+-- Inserção de teste para a tabela placas_video
+INSERT INTO placas_video (nome, descricao, descricao_detalhada, qualidade, imagem, preco, link_loja) VALUES
+('RTX 4060 VENTUS 2x Black OC MSI', 'Placa de Vídeo RTX 4060 VENTUS 2x Black OC', 'MSI NVIDIA GeForce, 8GB GDDR6, DLSS, Ray Tracing.', 'Excelente', 'https://www.kabum.com.br/_next/image?url=https%3A%2F%2Fimages.kabum.com.br%2Fprodutos%2Ffotos%2F469132%2Fplaca-de-video-rtx-4060-ventus-2x-black-oc-msi-nvidia-geforce-8gb-gddr6-dlss-ray-tracing_1688052210_g.jpg&w=640&q=100', 1989.99, 'https://l1nk.dev/DFVpt');
+
+
 
 
 
@@ -130,7 +234,16 @@ INSERT INTO placas_mae (nome, socket, memoria_max) VALUES
 ('ASUS TUF Gaming B550-PLUS', 'AM4', 128),
 ('MSI Z490 Gaming Carbon WiFi', 'LGA 1200', 128),
 ('Gigabyte B550M AORUS PRO-P', 'AM4', 128);
-
+INSERT INTO placas_mae (nome, socket, memoria_max, preco) VALUES
+('MSI Z490 Gaming Carbon WiFi', 'LGA 1200', 128, 899.99);
+INSERT INTO processadores (nome, socket, memoria_max, preco, descricao_detalhada) VALUES
+('Intel Core i5-10400', 'LGA 1200', 128, 180.00, 'Processador de 6 núcleos e 12 threads, ideal para tarefas do dia a dia e jogos leves.'),
+('Intel Core i7-10700K', 'LGA 1200', 128, 320.00, 'Processador de 8 núcleos e 16 threads, excelente para jogos e aplicações intensivas.'),
+('AMD Ryzen 5 3600', 'AM4', 128, 200.00, 'Processador de 6 núcleos e 12 threads, conhecido por seu desempenho sólido em jogos e multitarefa.'),
+('AMD Ryzen 7 5800X', 'AM4', 128, 450.00, 'Processador de 8 núcleos e 16 threads, muito eficiente para tarefas de alta performance e jogos.'),
+('Intel Core i9-10900K', 'LGA 1200', 128, 500.00, 'Processador de 10 núcleos e 20 threads, ideal para entusiastas e trabalhos pesados.'),
+-- Adicione o restante dos processadores da mesma forma
+;
 
 -- Assegurando que as placas-mãe existam antes de inserir compatibilidades
 INSERT INTO compatibilidade (processador_id, placa_mae_id) VALUES
@@ -198,10 +311,12 @@ CREATE TABLE placas_video (
     imagem varchar(300) not null,
     preco DECIMAL(10 ,2) not null,
     chipset VARCHAR(50) NOT NULL
-    
-    
 );
 
+INSERT INTO placas_video (nome, descricao, descricao_detalhada, qualidade, imagem, preco, link_loja, link_descricao, chipset) VALUES
+('RTX 4060 VENTUS 2x Black OC MSI', 'Placa de Vídeo RTX 4060 VENTUS 2x Black OC', 'MSI NVIDIA GeForce, 8GB GDDR6, DLSS, Ray Tracing.', 'Excelente', 'https://www.kabum.com.br/_next/image?url=https%3A%2F%2Fimages.kabum.com.br%2Fprodutos%2Ffotos%2F469132%2Fplaca-de-video-rtx-4060-ventus-2x-black-oc-msi-nvidia-geforce-8gb-gddr6-dlss-ray-tracing_1688052210_g.jpg&w=640&q=100', 1989.99, 'https://l1nk.dev/DFVpt', 'https://www.kabum.com.br/produto/469132/placa-de-video-rtx-4060-ventus-2x-black-oc-msi-nvidia-geforce-8gb-gddr6-dlss-ray-tracing', 'NVIDIA GeForce RTX 4060');
+
+select * from placas_video;
 INSERT INTO placas_video (link_descricao, nome, descricao, descricao_detalhada, qualidade, imagem, preco, chipset) VALUES
 ('https://meusite.com/descricao/nvidia-geforce-rtx-3080', 'NVIDIA GeForce RTX 3080', 'Placa de vídeo de altíssima performance para jogos e criação de conteúdo.', 'Placa de vídeo com arquitetura Ampere, oferecendo um desempenho incrível e recursos avançados para jogos e criação de conteúdo. Ideal para jogos em 4K e aplicativos exigentes.', 'Alta', 'https://example.com/rtx3080.jpg', 699.99, 'RTX 3080'),
 ('https://meusite.com/descricao/nvidia-geforce-rtx-3070', 'NVIDIA GeForce RTX 3070', 'Placa de vídeo com excelente custo-benefício para jogos em alta resolução.', 'Com arquitetura Ampere, esta placa oferece um desempenho excepcional para jogos em 1440p e 4K. Ideal para gamers que buscam alta performance sem gastar muito.', 'Alta', 'https://example.com/rtx3070.jpg', 499.99, 'RTX 3070'),
@@ -235,11 +350,107 @@ CREATE TABLE compatibilidade_video (
 drop table placas_video;
 
 
-INSERT INTO compatibilidade_video (processador_id, placa_video_id) VALUES (1, 2);  -- Intel Core i5-10400 e NVIDIA GeForce RTX 3070
-INSERT INTO compatibilidade_video (processador_id, placa_video_id) VALUES (2, 1);  -- Intel Core i7-10700K e NVIDIA GeForce RTX 3080
-INSERT INTO compatibilidade_video (processador_id, placa_video_id) VALUES (3, 1);  -- AMD Ryzen 5 3600 e NVIDIA GeForce RTX 3080
-INSERT INTO compatibilidade_video (processador_id, placa_video_id) VALUES (4, 1);  -- AMD Ryzen 7 5800X e NVIDIA GeForce RTX 3080
-INSERT INTO compatibilidade_video (processador_id, placa_video_id) VALUES (5, 1);  -- Intel Core i9-10900K e NVIDIA GeForce RTX 3080
+-- Intel Core i9-10900K e NVIDIA GeForce RTX 3080
+    
+    
+    INSERT INTO compatibilidade_video (processador_id, placa_video_id) VALUES 
+(5, 6), -- Intel Core i9-10900K com NVIDIA GeForce RTX 3090
+(11, 7), -- AMD Ryzen 9 5950X com AMD Radeon RX 6900 XT
+(18, 1), -- Intel Core i7-12700K com NVIDIA GeForce RTX 3080
+
+(2, 2), -- Intel Core i7-10700K com NVIDIA GeForce RTX 3070
+(4, 3), -- AMD Ryzen 7 5800X com AMD Radeon RX 6700 XT
+(33, 4), -- Intel Core i5-11600K com NVIDIA GeForce RTX 3060 Ti
+
+(1, 8), -- Intel Core i5-10400 com NVIDIA GeForce RTX 3060
+(3, 13), -- AMD Ryzen 5 3600 com AMD Radeon RX 5600 XT
+(6, 10), -- Intel Core i3-10100 com NVIDIA GeForce GTX 1660 Super
+
+(13, 17), -- Intel Core i3-10300 com AMD Radeon RX 570
+(20, 10), -- AMD Ryzen 5 3400G com NVIDIA GeForce GTX 1660 Super
+(17, 15); -- Intel Core i5-11400F com AMD Radeon RX 5500 XT
+    select * from processadores;
+    
+    /*
+    CREATE TABLE pecas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL,
+    tipo ENUM('CPU', 'Placa-mãe', 'RAM', 'GPU', 'Fonte') NOT NULL,
+    preco DECIMAL(10, 2) NOT NULL,
+    lojas_disponiveis TEXT NOT NULL
+);
+
+INSERT INTO pecas (nome, tipo, preco, lojas_disponiveis) VALUES
+('Intel Core i7', 'CPU', 1500.00, 'Loja A, Loja B'),
+('ASUS B450', 'Placa-mãe', 700.00, 'Loja C, Loja D'),
+('Corsair 16GB', 'RAM', 300.00, 'Loja E, Loja F'),
+('NVIDIA GTX 1660', 'GPU', 1200.00, 'Loja G, Loja H'),
+('Corsair 750W', 'Fonte', 400.00, 'Loja I, Loja J');
+
+INSERT INTO compatibilidade_cpu_placa_mae (cpu_id, motherboard_id) VALUES (1, 2);
+INSERT INTO compatibilidade_placa_mae_ram (motherboard_id, ram_id) VALUES (2, 3);
+INSERT INTO compatibilidade_placa_mae_video (motherboard_id, gpu_id) VALUES (2, 4);
+INSERT INTO compatibilidade_fonte_placa_mae (motherboard_id, fonte_id) VALUES (2, 5);
+
+
+CREATE TABLE compatibilidade_cpu_placa_mae (
+    cpu_id INT,
+    motherboard_id INT,
+    PRIMARY KEY (cpu_id, motherboard_id),
+    FOREIGN KEY (cpu_id) REFERENCES pecas(id),
+    FOREIGN KEY (motherboard_id) REFERENCES pecas(id)
+);
+
+
+CREATE TABLE compatibilidade_placa_mae_ram (
+    motherboard_id INT,
+    ram_id INT,
+    PRIMARY KEY (motherboard_id, ram_id),
+    FOREIGN KEY (motherboard_id) REFERENCES pecas(id),
+    FOREIGN KEY (ram_id) REFERENCES pecas(id)
+);
+
+CREATE TABLE compatibilidade_placa_mae_video (
+    motherboard_id INT,
+    gpu_id INT,
+    PRIMARY KEY (motherboard_id, gpu_id),
+    FOREIGN KEY (motherboard_id) REFERENCES pecas(id),
+    FOREIGN KEY (gpu_id) REFERENCES pecas(id)
+);
+
+CREATE TABLE compatibilidade_fonte_placa_mae (
+    motherboard_id INT,
+    fonte_id INT,
+    PRIMARY KEY (motherboard_id, fonte_id),
+    FOREIGN KEY (motherboard_id) REFERENCES pecas(id),
+    FOREIGN KEY (fonte_id) REFERENCES pecas(id)
+);
+    
+*/  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     /*Sessão Usuarios */
