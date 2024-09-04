@@ -112,3 +112,5 @@ class BuildModel
         return $stmt->fetch_all(MYSQLI_ASSOC);
     }
 }
+
+?>
