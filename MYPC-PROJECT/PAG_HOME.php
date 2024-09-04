@@ -15,7 +15,7 @@
       <nav>
         <ul>
           <li><a href="index.html">Home</a></li>
-          <li><a href="builds.html">Builds</a></li>
+          <li><a href="VIEW/view_builds.php">Builds</a></li>
           <li><a href="recomendacoes.html">Recomendações</a></li>
           <li><a href="suporte.html">Suporte</a></li>
         </ul>
@@ -40,7 +40,7 @@
       <div class="cards">
         <div class="card">
           <h3>Montagem</h3>
-        <a href="montagem.html"> <img src="montando.jpg" alt="Imagem de Montagem"> </a>
+        <a href="VIEW/OrçamentoBuild.php"> <img src="montando.jpg" alt="Imagem de Montagem"> </a>
         </div>
         <div class="card">
           <h3>Manual</h3>
