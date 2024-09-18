@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 04/09/2024 às 02:00
+-- Tempo de geração: 18/09/2024 às 02:00
 -- Versão do servidor: 8.0.36
 -- Versão do PHP: 8.2.13
 
@@ -76,14 +76,70 @@ CREATE TABLE IF NOT EXISTS `build_pc` (
   KEY `id_memoria_ram` (`id_memoria_ram`),
   KEY `id_placa_video` (`id_placa_video`),
   KEY `id_fonte` (`id_fonte`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Despejando dados para a tabela `build_pc`
 --
 
 INSERT INTO `build_pc` (`id`, `nome_build`, `id_processador`, `id_placa_mae`, `id_memoria_ram`, `id_placa_video`, `id_fonte`, `preco_total`, `data_criacao`) VALUES
-(22, 'Isaac', 1, 1, 1, 1, 1, 1399.95, '2024-09-03 00:31:51');
+(22, 'Isaac', 1, 1, 1, 1, 1, 1399.95, '2024-09-03 00:31:51'),
+(23, 'PC_GAMER', 2, 2, 2, 2, 1, 1629.95, '2024-09-15 14:17:36'),
+(24, 'ola', 1, 1, 1, 1, 1, 1399.95, '2024-09-15 14:32:18'),
+(25, 'iiii', 1, 1, 1, 1, 1, 1399.95, '2024-09-15 14:32:47');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `build_pronta`
+--
+
+DROP TABLE IF EXISTS `build_pronta`;
+CREATE TABLE IF NOT EXISTS `build_pronta` (
+  `nome_Build` varchar(50) DEFAULT NULL,
+  `especificacao` varchar(50) DEFAULT NULL,
+  `preco` decimal(10,2) DEFAULT NULL,
+  `link_1` varchar(700) DEFAULT NULL,
+  `link_2` varchar(700) DEFAULT NULL,
+  `descricao` varchar(600) DEFAULT NULL,
+  `imagem` varchar(700) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `comentarios`
+--
+
+DROP TABLE IF EXISTS `comentarios`;
+CREATE TABLE IF NOT EXISTS `comentarios` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `conteudo` text NOT NULL,
+  `data_comentario` datetime DEFAULT CURRENT_TIMESTAMP,
+  `usuario_id` int DEFAULT NULL,
+  `topico_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `topico_id` (`topico_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Despejando dados para a tabela `comentarios`
+--
+
+INSERT INTO `comentarios` (`id`, `conteudo`, `data_comentario`, `usuario_id`, `topico_id`) VALUES
+(1, 'que daora', '2024-09-17 22:28:37', 1, 2),
+(2, 'acho paia', '2024-09-17 22:29:04', 1, 2),
+(3, 'acho paia', '2024-09-17 22:29:30', 1, 2),
+(4, 'acho paia', '2024-09-17 22:29:33', 1, 2),
+(5, 'acho paia', '2024-09-17 22:29:35', 1, 2),
+(6, 'acho paia', '2024-09-17 22:29:51', 1, 2),
+(7, 'seila', '2024-09-17 22:32:29', 1, 2),
+(8, '1', '2024-09-17 22:32:31', 1, 2),
+(9, 'concordo', '2024-09-17 22:35:52', 1, 4),
+(10, 'não sei acho que não e assim', '2024-09-17 22:36:44', 1, 4),
+(11, 'sera ?', '2024-09-17 22:36:55', 1, 3),
+(12, 'ola', '2024-09-17 22:40:13', 1, 7),
+(13, 'acho que não pois Nvidea tem o melhores graficos', '2024-09-17 22:42:10', 1, 9);
 
 -- --------------------------------------------------------
 
@@ -272,7 +328,7 @@ CREATE TABLE IF NOT EXISTS `placa_video` (
 --
 
 INSERT INTO `placa_video` (`id`, `nome`, `descricao`, `descricao_detalhada`, `qualidade`, `imagem`, `preco`, `tipo_memoria`, `capacidade_memoria`, `clock_base`, `clock_turbo`, `tdp`, `link_loja`) VALUES
-(1, 'NVIDIA GeForce RTX 3080', 'Placa de vídeo NVIDIA GeForce RTX 3080', '8GB GDDR6X, excelente desempenho para jogos em 4K', 'Muito Alta', 'nvidia-geforce-rtx-3080.jpg', 699.99, 'GDDR6X', 8, 1440, 1710, 320, 'https://www.example.com/nvidia-geforce-rtx-3080'),
+(1, 'NVIDIA GeForce RTX 3080', 'Placa de vídeo NVIDIA GeForce RTX 3080', '8GB GDDR6X, excelente desempenho para jogos em 4K', 'Muito Alta', 'https://cdn.mos.cms.futurecdn.net/obNHUnF85G2kHtApYvix5D.png', 699.99, 'GDDR6X', 8, 1440, 1710, 320, 'https://www.example.com/nvidia-geforce-rtx-3080'),
 (2, 'AMD Radeon RX 6800 XT', 'Placa de vídeo AMD Radeon RX 6800 XT', '16GB GDDR6, alta performance para jogos e criação de conteúdo', 'Muito Alta', 'amd-radeon-rx-6800-xt.jpg', 649.99, 'GDDR6', 16, 2015, 2250, 300, 'https://www.example.com/amd-radeon-rx-6800-xt');
 
 -- --------------------------------------------------------
@@ -335,6 +391,36 @@ INSERT INTO `tecnico` (`idtecnico`, `nome`, `email`, `certificado`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estrutura para tabela `topicos`
+--
+
+DROP TABLE IF EXISTS `topicos`;
+CREATE TABLE IF NOT EXISTS `topicos` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `titulo` varchar(220) NOT NULL,
+  `descricao` text NOT NULL,
+  `data_criacao` datetime DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Despejando dados para a tabela `topicos`
+--
+
+INSERT INTO `topicos` (`id`, `titulo`, `descricao`, `data_criacao`) VALUES
+(1, 'num', 's', '2024-09-17 22:25:52'),
+(2, 'num', '12323', '2024-09-17 22:26:52'),
+(3, 'num', 's', '2024-09-17 22:34:26'),
+(4, 'MYPC', 'AMD e muito ruim', '2024-09-17 22:35:24'),
+(5, 'BOB', 'seila', '2024-09-17 22:39:02'),
+(6, 'BOB', 'seila', '2024-09-17 22:39:51'),
+(7, 'ola', '123', '2024-09-17 22:39:59'),
+(8, 'AMD e Ruim', 'Acho amd muito ruim , me de sua opinião', '2024-09-17 22:40:50'),
+(9, 'AMD e melhor que NVIDEA', 'Acho que e melhor pois AMD e mais barata e tals.', '2024-09-17 22:41:33');
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura para tabela `usuario`
 --
 
@@ -391,6 +477,12 @@ ALTER TABLE `build_pc`
   ADD CONSTRAINT `build_pc_ibfk_3` FOREIGN KEY (`id_memoria_ram`) REFERENCES `memoria_ram` (`id`),
   ADD CONSTRAINT `build_pc_ibfk_4` FOREIGN KEY (`id_placa_video`) REFERENCES `placa_video` (`id`),
   ADD CONSTRAINT `build_pc_ibfk_5` FOREIGN KEY (`id_fonte`) REFERENCES `fonte` (`id`);
+
+--
+-- Restrições para tabelas `comentarios`
+--
+ALTER TABLE `comentarios`
+  ADD CONSTRAINT `comentarios_ibfk_1` FOREIGN KEY (`topico_id`) REFERENCES `topicos` (`id`) ON DELETE CASCADE;
 
 --
 -- Restrições para tabelas `compatibilidade_video`
