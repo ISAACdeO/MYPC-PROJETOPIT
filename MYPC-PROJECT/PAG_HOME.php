@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -16,7 +14,7 @@
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="VIEW/view_builds.php">Builds</a></li>
-          <li><a href="recomendacoes.html">Recomendações</a></li>
+          <li><a href="VIEW/PAGS_RECOMENDACAO/PagComputador.php">Recomendações</a></li>
           <li><a href="VIEW/list_topics.php">Forum</a></li>
         </ul>
       </nav>
