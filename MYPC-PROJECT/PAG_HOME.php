@@ -17,7 +17,7 @@
           <li><a href="index.html">Home</a></li>
           <li><a href="VIEW/view_builds.php">Builds</a></li>
           <li><a href="recomendacoes.html">Recomendações</a></li>
-          <li><a href="suporte.html">Suporte</a></li>
+          <li><a href="VIEW/list_topics.php">Forum</a></li>
         </ul>
       </nav>
       <div class="search">
