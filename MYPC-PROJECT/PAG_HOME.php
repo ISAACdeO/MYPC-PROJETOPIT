@@ -1,129 +1,70 @@
-/* Geral */
-body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #121212;
-    color: #f2f2f2;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-}
+<?php
+session_start();
+?>
 
-/* Header */
-header {
-    background-color: #1f1f1f;
-    padding: 15px 0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MYPC - Página Inicial</title>
+    <link rel="stylesheet" href="PAG_HOME.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html"><h1>MYPC</h1></a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="VIEW/view_builds.php">Builds</a></li>
+                    <li><a href="recomendacoes.html">Recomendações</a></li>
+                    <li><a href="suporte.html">Suporte</a></li>
+                </ul>
+            </nav>
+            <div class="search">
+                <input type="text" placeholder="Pesquisar">
+                <button type="submit"><img src="lupa.png" alt="" width="20px" height="20px" id="lupa"></button>
+            </div>
+            <div class="actions">
+                <?php if (isset($_SESSION['user_name'])): ?>
+                    <span>Bem-vindo, <?php echo htmlspecialchars($_SESSION['user_name']); ?>!</span>
+                    <a href="logout.php"><button type="button">Sair</button></a>
+                <?php else: ?>
+                    <button type="button" onclick="window.location.href='login.php'">Entrar</button>
+                    <button type="button" onclick="window.location.href='register.php'">Registrar</button>
+                <?php endif; ?>
+            </div>
+        </div>
+    </header>
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
+    <main>
+        <div class="container">
+            <div class="text-content">
+                <h2>Monte o computador perfeito para você.</h2>
+                <p>Compatibilidade e desempenho estão ao seu alcance.</p>
+            </div>
+            <div class="cards">
+                <div class="card">
+                    <h3>Montagem</h3>
+                    <a href="VIEW/OrçamentoBuild.php"><img src="montando.jpg" alt="Imagem de Montagem"></a>
+                </div>
+                <div class="card">
+                    <h3>Manual</h3>
+                    <a href="manual.html"><img src="manual.jpg" alt="Imagem de Manual"></a>
+                </div>
+                <div class="card">
+                    <h3>Compatibilidade</h3>
+                    <a href="VIEW/PagCompatibilidade_video.php"><img src="upgrade.png" alt="Imagem de Upgrade"></a>
+                </div>
+            </div>
+        </div>
+    </main>
 
-h1 {
-    font-size: 24px;
-    color: #d8a42c;
-    margin: 0;
-}
-
-nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    align-items: center;
-}
-
-nav li {
-    margin-right: 20px;
-}
-
-nav a {
-    color: #f2f2f2;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 16px;
-    transition: color 0.3s ease;
-}
-
-nav a:hover {
-    color: #d8a42c;
-}
-
-/* Main Content */
-main {
-    padding: 50px 20px;
-    text-align: center;
-}
-
-.text-content {
-    margin-bottom: 40px;
-}
-
-h2 {
-    font-size: 32px;
-    margin-bottom: 10px;
-    line-height: 1.2;
-}
-
-p {
-    font-size: 18px;
-    margin-bottom: 40px;
-    line-height: 1.5;
-    color: #d8a42c;
-}
-
-.cards {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-}
-
-.card {
-    width: 30%;
-    margin-bottom: 20px;
-    background-color: #1f1f1f;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card img {
-    width: 100%;
-    height: auto;
-    margin-top: 15px;
-    border-radius: 5px;
-    object-fit: cover;
-}
-
-.card h3 {
-    margin-top: 0;
-    font-size: 24px;
-    color: #d8a42c;
-}
-
-.card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
-}
-
-/* Footer */
-footer {
-    background-color: #1f1f1f;
-    color: #f2f2f2;
-    padding: 20px 0;
-    text-align: center;
-    margin-top: 40px;
-}
+    <footer>
+        <div class="container">
+            <p id="p1">&copy; 2023 MYPC. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>
