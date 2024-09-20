@@ -57,52 +57,6 @@ nav a:hover {
     color: #d8a42c;
 }
 
-.search {
-    display: flex;
-    align-items: center;
-    position: relative;
-}
-
-.search input {
-    padding: 8px 15px;
-    border: none;
-    border-radius: 20px;
-    background-color: #333;
-    color: #f2f2f2;
-    width: 200px;
-    transition: width 0.3s ease;
-}
-
-.search input:focus {
-    width: 250px;
-}
-
-.search button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    position: absolute;
-    right: 5px;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.actions button {
-    padding: 8px 20px;
-    border: none;
-    border-radius: 20px;
-    background-color: #d8a42c;
-    color: #1f1f1f;
-    cursor: pointer;
-    font-weight: 600;
-    margin-left: 10px;
-    transition: background-color 0.3s ease;
-}
-
-.actions button:hover {
-    background-color: #bf8e1c;
-}
-
 /* Main Content */
 main {
     padding: 50px 20px;
@@ -165,27 +119,6 @@ p {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
 }
 
-/* Links */
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-a:visited {
-    text-decoration: none;
-    color: inherit;
-}
-
-a:hover {
-    text-decoration: none;
-    color: inherit;
-}
-
-a:focus {
-    text-decoration: none;
-    color: inherit;
-}
-
 /* Footer */
 footer {
     background-color: #1f1f1f;
@@ -193,95 +126,4 @@ footer {
     padding: 20px 0;
     text-align: center;
     margin-top: 40px;
-}
-
-/* Media Queries */
-@media (max-width: 1024px) {
-    nav ul {
-        flex-direction: column;
-        align-items: flex-start;
-        background-color: #1f1f1f;
-        padding: 10px;
-        border-radius: 10px;
-    }
-
-    nav li {
-        margin: 10px 0;
-    }
-
-    .cards {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .card {
-        width: 80%;
-    }
-
-    .search input {
-        width: 180px;
-    }
-
-    .search input:focus {
-        width: 220px;
-    }
-}
-
-@media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    nav ul {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    nav li {
-        margin: 10px 0;
-    }
-
-    .cards {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .card {
-        width: 100%;
-        margin-bottom: 30px;
-    }
-}
-
-@media (max-width: 480px) {
-    h1 {
-        font-size: 20px;
-    }
-
-    h2 {
-        font-size: 24px;
-    }
-
-    p {
-        font-size: 16px;
-    }
-
-    .search input {
-        width: 150px;
-    }
-
-    .search input:focus {
-        width: 180px;
-    }
-
-    .actions button {
-        padding: 8px 15px;
-    }
-}
-
-/* Ajustes adicionais */
-
-#p1 {
-    padding-left: 430px;
-    padding-top: 25px;
 }
