@@ -15,7 +15,7 @@ session_start();
         <h2>Login</h2>
         <form action="login_process.php" method="POST">
             <input type="email" name="email" placeholder="Email" required>
-            <input type="password" name="password" placeholder="Senha" required>
+            <input type="password" name="senha" placeholder="Senha" required>
             <button type="submit">Entrar</button>
         </form>
         <a href="register.php">Não tem uma conta? Registrar</a>
