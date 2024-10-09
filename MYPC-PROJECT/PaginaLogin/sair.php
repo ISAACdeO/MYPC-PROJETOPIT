@@ -3,6 +3,6 @@ session_start();
 unset($_SESSION['id'], $_SESSION['nome'], $_SESSION['email']);
 
 $_SESSION['msg'] = "Deslogado com sucesso";
-header("Location: telaDLogin.php");
+header("Location: /MYPC-PROJECT/PAG_HOME.phpp");
 
 ?>
