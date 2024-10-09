@@ -1,22 +1,22 @@
 <?php
 session_start();
 
-// Conexão com o banco de dados MYPC_DB
-$conn = new mysqli("localhost", "root", "", "MYPC_DB");
+
+$conn = new mysqli("localhost", "root", "", "database_mypc");
 
 if ($conn->connect_error) {
     die("Erro de conexão: " . $conn->connect_error);
 }
 
-// Verifica se o formulário foi enviado
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name = $_POST['name'] ?? '';
-    $email = $_POST['email'] ?? '';
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-    // Prepara a consulta SQL para inserir o usuário
-    $stmt = $conn->prepare("INSERT INTO users (name, email, password) VALUES (?, ?, ?)");
-    $stmt->bind_param("sss", $name, $email, $password);
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $nome = $_POST['nome'] ?? '';
+    $email = $_POST['email'] ?? '';
+    $senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
+
+
+    $stmt = $conn->prepare("INSERT INTO usuarios (nome, email, senha) VALUES (?, ?, ?)");
+    $stmt->bind_param("sss", $nome, $email, $senha);
 
     if ($stmt->execute()) {
         header("Location: login.php");
@@ -30,3 +30,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 $conn->close();
 ?>
+
