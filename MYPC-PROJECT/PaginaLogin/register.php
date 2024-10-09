@@ -14,9 +14,9 @@ session_start();
     <div class="container">
         <h2>Cadastrar</h2>
         <form action="register_process.php" method="POST">
-            <input type="text" name="name" placeholder="Nome" required>
+            <input type="text" name="nome" placeholder="Nome" required>
             <input type="email" name="email" placeholder="Email" required>
-            <input type="password" name="password" placeholder="Senha" required>
+            <input type="password" name="senha" placeholder="Senha" required>
             <button type="submit">Registrar</button>
         </form>
         <a href="login.php">Já tem uma conta? Fazer login</a>
