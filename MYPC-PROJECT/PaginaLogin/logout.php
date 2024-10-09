@@ -1,11 +1,11 @@
 <?php
 session_start();
 
-// Destrói a sessão
+
 session_unset();
 session_destroy();
 
-// Redireciona para a página de login
-header("Location: login.php");
+
+header("Location: /MYPC-PROJECT/PAG_HOME.php");
 exit();
 ?>
