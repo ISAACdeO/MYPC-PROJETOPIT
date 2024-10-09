@@ -22,17 +22,13 @@ session_start();
                     <li><a href="suporte.html">Suporte</a></li>
                 </ul>
             </nav>
-            <div class="search">
-                <input type="text" placeholder="Pesquisar">
-                <button type="submit"><img src="lupa.png" alt="" width="20px" height="20px" id="lupa"></button>
-            </div>
             <div class="actions">
                 <?php if (isset($_SESSION['user_name'])): ?>
                     <span>Bem-vindo, <?php echo htmlspecialchars($_SESSION['user_name']); ?>!</span>
-                    <a href="logout.php"><button type="button">Sair</button></a>
+                    <a href="PaginaLogin/logout.php"><button type="button">Sair</button></a>
                 <?php else: ?>
-                    <button type="button" onclick="window.location.href='login.php'">Entrar</button>
-                    <button type="button" onclick="window.location.href='register.php'">Registrar</button>
+                    <button type="button" onclick="window.location.href='PaginaLogin/login.php'">Entrar</button>
+                    <button type="button" onclick="window.location.href='PaginaLogin/register.php'">Registrar</button>
                 <?php endif; ?>
             </div>
         </div>
