@@ -1,0 +1,175 @@
+/* Reset básico para garantir consistência entre navegadores */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.logo{
+    color: #ffffff!important;
+    text-decoration: none!important;
+}
+.Menus{
+    display: flex;
+    height: 80%;
+    align-items: center;
+}
+#Manual{
+    height: 89%;
+}
+
+/* Corpo e Fonte */
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+}
+
+/* Estilização do Header */
+header {
+    background: #333;
+    color: #fff;
+    padding: 15px 0;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    font-size: 24px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    width: 18em;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #f0c040; /* Destaque ao passar o mouse */
+}
+
+/* Estilização da barra de busca */
+.search {
+    display: flex;
+}
+
+.search input {
+    padding: 8px;
+    border: none;
+    border-radius: 4px 0 0 4px;
+}
+
+.search button {
+    padding: 8px;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    background: #f0c040; /* Cor de fundo do botão */
+    cursor: pointer;
+}
+
+.search button img {
+    vertical-align: middle;
+}
+
+/* Estilização das ações de login */
+.actions {
+    display: flex;
+}
+
+.actions button {
+    margin-left: 10px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background: #007bff; /* Cor de fundo do botão */
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.actions button:hover {
+    background: #0056b3; /* Tom mais escuro ao passar o mouse */
+}
+
+/* Estilização do Main */
+main {
+    display: flex;
+}
+
+.text-content {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.cards {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin: 10px;
+    width: calc(30% - 20px); /* Responsivo */
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: scale(1.05); /* Efeito de zoom ao passar o mouse */
+}
+
+.card img {
+    width: 100%;
+    border-radius: 5px 5px 0 0;
+}
+
+.card h3 {
+    margin: 10px 0;
+}
+
+/* Estilização do Footer */
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 15px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+#Saida{
+    height: 2em;
+    width: 4em;
+    background-color: red;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#Saida a{
+    color: white!important;
+    text-decoration: none!important;
+}
+body{
+    display: grid;
+    grid-template: 2fr 47.3em 3fr / 1fr;
+}
+
+@media(max-width: 430px) and (max-height: 720px){
+}
